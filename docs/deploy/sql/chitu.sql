@@ -1,3 +1,5 @@
+create database chitu;
+use chitu;
 CREATE TABLE `regression_result` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '主键',
   `data_source_type` varchar(255) DEFAULT NULL COMMENT '数据源类型',
@@ -703,3 +705,6 @@ CREATE TABLE `test_db` (
   KEY `index_datasource_id` (`data_source_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5097 DEFAULT CHARSET=utf8mb4 COMMENT='元表配置';
 
+-- 初始化数据
+INSERT INTO sdp_user (user_name, employee_number, private_mobile, is_admin, enabled_flag, password, email)
+VALUES ('admin', 'admin', '18825195488', 1, 1,  '123456', '745596015@qq.com');
