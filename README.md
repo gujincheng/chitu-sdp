@@ -1,6 +1,16 @@
 ![输入图片说明](docs/md/image/项目名logo.png)
 
-[//]: # (> 企业级一站式实时计算平台)
+<p align="center">
+<img src="docs/md/image/项目名logo.png" width = "256"  div align=center />
+</p>
+
+<p align="center">
+    <a href="https://knowstreaming.com">产品官网</a> | 
+    <a href="https://github.com/didi/KnowStreaming/releases">下载地址</a> | 
+    <a href="https://doc.knowstreaming.com/product">文档资源</a> | 
+    <a href="https://demo.knowstreaming.com">体验环境</a> 
+</p>
+
 ### 项目简介
 #### 概述
 “赤兔” 实时计算平台是跨越集团大数据生态体系的重要基石，具备开箱即用、一站式开发、亚秒级延时、统一SQL语言、端到端一致性、丰富的上下游支持、安全稳定等特点的企业级实时大数据计算平台。 赤兔平台提供SQL化的IDE开发环境，UI化的任务发布及任务监控体系，支持多环境隔离及环境切换，可帮助企业快速实现实时应用开发与落地，加速企业面向实时数字化的建设进程。
