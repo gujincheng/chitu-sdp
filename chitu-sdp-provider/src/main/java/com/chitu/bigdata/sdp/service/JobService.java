@@ -655,7 +655,7 @@ public class JobService extends GenericService<SdpJob, Long> {
             log.error("获取yarn上面状态列表异常:{}", e);
             throw new ApplicationException(ResponseCode.VALIDATE_JOB_NAME_FAIL, e.getMessage());
         }
-        if (Objects.nonNull(appInfoList)) {
+        if (Objects.nonNull(appInfoList) && Objects.nonNull(appInfoList.getApps())) {
             List<AppInfoList.AppInfos.Apps> infoList = appInfoList.getApps().getApp();
             infoList.forEach(y -> {
                 if (appTypes.contains(y.getState())) {
