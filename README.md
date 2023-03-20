@@ -42,7 +42,7 @@
 | 姓名  | 邮箱        |职责        |
 |-----|-----------|-----------|
 | 商渭清  | sang.williams@gmail.com | PMCC主席|
-| 唐安律 | 123456789 | PMCC副主席|
+| 唐安律 | lvvhebe@163.com | PMCC副主席|
 | 刘斌  | sunnykaka0721@gmail.com | PMCC副主席|
 
 [//]: # ([操作指南]&#40;docs/md/操作指南.md&#41;)
