@@ -20,33 +20,35 @@
 
 ![输入图片说明](docs/md/image/功能特性.png)
 
+
+
+## 快速开始
+
+* [Flink SQL 作业快速入门](docs/md/FlinkSQL作业快速入门.md)
+* [Flink DS 作业快速入门](docs/md/FlinkDataStream作业快速入门.md)
+
 ## 环境搭建部署
 
 * [开发环境搭建](docs/md/本地运行.md)
 
 * [Linux 环境部署](docs/md/平台部署.md)
 
-* [docker 环境部署](docs/md/docker部署.md)
-
-## 快速开始
-* [Flink SQL 作业快速入门](docs/md/FlinkSQL作业快速入门.md)
-
-* [Flink DS 作业快速入门](docs/md/FlinkDataStream作业快速入门.md)
+* [Docker 环境部署](docs/md/docker部署.md)
 
 ## 获取帮助
 
 * [操作指南](docs/md/docker部署.md)
 
-* 咨询客服
+* 扫码添加星河小助手，进入赤兔开源社区交流群
 
 ![](docs/md/image/客服二维码.png)
 
 ## 联系我们
 | 姓名  | 邮箱        |职责        |
 |-----|-----------|-----------|
-| 商渭清  | sang.williams@gmail.com | PMCC主席|
-| 唐安律 | lvvhebe@163.com | PMCC副主席|
-| 刘斌  | sunnykaka0721@gmail.com | PMCC副主席|
+| 商渭清  | sang.williams@gmail.com | PMC Chair |
+| 唐安律 | lvvhebe@163.com | PMC Vice Chair |
+| 刘斌  | sunnykaka0721@gmail.com | PMC Vice Chair |
 
 
 
