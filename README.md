@@ -25,18 +25,12 @@
 
 * [Linux 环境部署](docs/md/平台部署.md)
 
-* [容器化部署](docs/md/docker部署.md)
-
-[//]: # (* [开发环境搭建]&#40;docs/md/本地运行.md&#41;)
-
-[//]: # (* [Linux 环境部署]&#40;docs/md/平台部署.md&#41;)
-
-[//]: # (* [容器化部署]&#40;docs/md/docker部署.md&#41;)
+* [docker 环境部署](docs/md/docker部署.md)
 
 ## 快速开始
-* [Flink SQL作业快速入门](docs/md/FlinkSQL作业快速入门.md)
+* [Flink SQL 作业快速入门](docs/md/FlinkSQL作业快速入门.md)
 
-* [Flink DS作业快速入门](docs/md/FlinkDataStream作业快速入门.md)
+* [Flink DS 作业快速入门](docs/md/FlinkDataStream作业快速入门.md)
 
 ## 获取帮助
 
@@ -53,7 +47,7 @@
 | 唐安律 | lvvhebe@163.com | PMCC副主席|
 | 刘斌  | sunnykaka0721@gmail.com | PMCC副主席|
 
-[//]: # ([操作指南]&#40;docs/md/操作指南.md&#41;)
+
 
 
 
