@@ -3,11 +3,11 @@
 </p>
 
 <p align="center">
-    <a href="https://knowstreaming.com">产品官网</a> | 
-    <a href="https://github.com/didi/KnowStreaming/releases">下载地址</a> | 
-    <a href="https://doc.knowstreaming.com/product">文档资源</a> | 
-    <a href="https://demo.knowstreaming.com">体验环境</a> 
+    <a href="https://galaxy-data-cn.github.io/chitu-sdp-website/">产品官网</a> | 
+    <a href="https://183.57.45.188/#/login">体验环境</a> 
 </p>
+
+---
 
 ### 项目简介
 #### 概述
