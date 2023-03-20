@@ -24,7 +24,7 @@ public class EnvInterceptor implements HandlerInterceptor {
             env = sdpConfig.getEnv();
             log.warn("请求地址 [{}],请求头env为空,取配置文件中的env配置值: {}",request.getRequestURI(),env);
         }
-        log.info("请求地址 [{}], 环境 [{}]", request.getRequestURI(), env);
+        //log.info("请求地址 [{}], 环境 [{}]", request.getRequestURI(), env);
         if (StringUtils.isBlank(env)) return true;
         EnvHolder.addEnv(sdpConfig.getOrDefault(env));
         return true;

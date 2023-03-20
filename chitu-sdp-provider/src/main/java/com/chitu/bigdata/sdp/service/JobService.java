@@ -545,9 +545,9 @@ public class JobService extends GenericService<SdpJob, Long> {
             JobConfig jobConfig = JSONObject.parseObject(sdpJob.getConfigContent(), JobConfig.class);
             SdpEngine engine = engineService.get(jobConfig.getEngineId());
             String jobName = String.format(JOB_NAME_FORMAT, projectCode, sdpJob.getJobName());
-            if (EngineTypeEnum.YARN.getType().equals(engine.getEngineType())) {
-                jobName = validateJobName(sdpJob, sdpProject);
-            }
+//            if (EngineTypeEnum.YARN.getType().equals(engine.getEngineType())) {
+//                jobName = validateJobName(sdpJob, sdpProject);
+//            }
 
             Application params = assembleParams(sdpJob, type, jobName, projectCode, sdpLog, engine);
             //当assembleParams出异常，插入日志表，下面的逻辑又出现异常，再次插入日志表，会出现主键重复问题
@@ -559,9 +559,7 @@ public class JobService extends GenericService<SdpJob, Long> {
             ResponseData responseData;
             LinkedHashMap response = null;
             try {
-                //String cluster = engineMapper.queryClusterByJobId(jobId);
                 String flinkClientUrl = getFlinkClientUrl(jobConfig);
-//                String flinkClientUrl = "http://localhost:12282";
                 responseData = restTemplate.postForObject(flinkClientUrl + "/flink/startJob", params, ResponseData.class);
                 log.info("启动任务返回结果===" + JSON.toJSONString(responseData));
                 if (responseData != null && responseData.getCode() == 0) {

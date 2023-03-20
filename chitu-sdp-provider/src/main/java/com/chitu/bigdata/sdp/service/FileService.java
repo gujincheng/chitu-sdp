@@ -1161,8 +1161,8 @@ public class FileService extends GenericService<SdpFile, Long> {
                 //申请人自己也要发通知
                 //admin.add(sdpJob1.getEmployeeNumber());
                 receiveUers.add(sdpJob1.getEmail());
-                log.info("上线成功发送通知===" + JSON.toJSONString(receiveUers));
-                emailNotifyService.sendMsg(Lists.newArrayList(receiveUers), "上线", JSON.toJSONString(assembleMsgContent(sdpJob1)));
+                //log.info("上线成功发送通知===" + JSON.toJSONString(receiveUers));
+                //emailNotifyService.sendMsg(Lists.newArrayList(receiveUers), "上线", JSON.toJSONString(assembleMsgContent(sdpJob1)));
             }
             //置空content防止信息泄漏
             job.setJobContent(null);
