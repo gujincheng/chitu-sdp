@@ -1,7 +1,5 @@
-![输入图片说明](docs/md/image/项目名logo.png)
-
 <p align="center">
-<img src="docs/md/image/项目名logo.png" width = "256"  div align=center />
+<img src="docs/md/image/项目名logo.png" width = "300"  div align=center />
 </p>
 
 <p align="center">
