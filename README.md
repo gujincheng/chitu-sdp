@@ -1,5 +1,5 @@
 <p align="center">
-<img src="docs/md/image/项目名logo.png"  width="50%" syt height="50%"  div align=center />
+<img src="docs/md/image/项目名logo.png"  width="30%" syt height="30%"  div align=center />
 </p>
 
 <p align="center">
