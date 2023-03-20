@@ -41,7 +41,7 @@
 
 * 扫码添加星河小助手，进入赤兔开源社区交流群
 
-![](docs/md/image/客服二维码.png)
+<img src="docs/md/image/客服二维码.png" style="zoom: 33%;" />
 
 ## 联系我们
 | 姓名  | 邮箱        |职责        |
