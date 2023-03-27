@@ -73,6 +73,7 @@
 - 张祥林, shylinzhang#163.com 
 - 邓栋花, 2243186407#qq.com
 - 陈敏, minchen0168#163.com
+- 韩建国, 13995971285@163.com
 
 ### PMC
 - 商渭清 (PMC Chair), sang.williams#gmail.com
