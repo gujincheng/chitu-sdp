@@ -194,7 +194,6 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-elasticsearch6_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
         </dependency>
 
 
@@ -217,7 +216,6 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-hbase-2.2_${scala.binary.version}</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
         </dependency>
 
 

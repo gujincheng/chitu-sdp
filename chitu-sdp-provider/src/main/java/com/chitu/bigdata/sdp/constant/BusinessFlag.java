@@ -9,7 +9,7 @@ import lombok.Getter;
  */
 @Getter
 public enum BusinessFlag {
-    DI("数据集成"),
+
     SDP("赤兔平台");
 
     private String flag;

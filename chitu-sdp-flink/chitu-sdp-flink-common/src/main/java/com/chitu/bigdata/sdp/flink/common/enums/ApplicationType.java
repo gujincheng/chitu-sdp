@@ -2,22 +2,11 @@ package com.chitu.bigdata.sdp.flink.common.enums;
 
 
 public enum ApplicationType {
-    /**
-     * SDP Flink
-     */
-    SDP_FLINK(1, "SDP Flink"),
+
     /**
      * Apache Flink
      */
-    APACHE_FLINK(2, "Apache Flink"),
-    /**
-     * SDP Spark
-     */
-    SDP_SPARK(3, "SDP Spark"),
-    /**
-     * Apache Spark
-     */
-    APACHE_SPARK(4, "Apache Spark");
+    APACHE_FLINK(2, "Apache Flink");
     int type;
     String name;
 

@@ -190,7 +190,7 @@ public class ProjectController {
         return ResponseUtils.success(projectService.get(sdpProject.getId()));
     }
 
-    @ValidateProjectLeader
+//    @ValidateProjectLeader
     @ApiOperation(value = "项目管理-查询业务线")
     @RequestMapping(value = "/queryBusinessLine",method= RequestMethod.GET)
     public ResponseData queryBusinessLine(@RequestHeader(value="env") String env ) {

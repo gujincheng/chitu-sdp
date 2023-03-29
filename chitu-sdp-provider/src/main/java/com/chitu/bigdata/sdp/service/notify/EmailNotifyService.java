@@ -1,8 +1,10 @@
 package com.chitu.bigdata.sdp.service.notify;
 
 import cn.hutool.core.util.StrUtil;
+import com.chitu.bigdata.sdp.config.SdpConfig;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.mail.SimpleEmail;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.context.config.annotation.RefreshScope;
 import org.springframework.stereotype.Service;
@@ -28,7 +30,15 @@ public class EmailNotifyService {
     @Value("${alert.email.senderPassword}")
     private String senderPassword;
 
+    @Autowired
+    private SdpConfig sdpConfig;
+
     public boolean sendMsg(List<String> employeeEmailList,String subject,String contentJsonStr){
+        SdpConfig.ExperienceEnv experienceEnv = sdpConfig.getExperienceEnv();
+        if(!(null != experienceEnv && null != experienceEnv.getIsExperienceEnv() && true == experienceEnv.getIsExperienceEnv() && null != experienceEnv.getJobRunningTime())){
+            // 体验环境无相关配置
+            return true;
+        }
         if(CollectionUtils.isEmpty(employeeEmailList)){
             return true;
         }

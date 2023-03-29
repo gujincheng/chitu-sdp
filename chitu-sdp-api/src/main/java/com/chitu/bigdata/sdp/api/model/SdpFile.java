@@ -146,12 +146,15 @@ public class SdpFile extends GenericModel<Long> implements Serializable {
     private String filePath;
 
     @TableField(exist = false)
-    private Boolean need2Approve;
-
-    @TableField(exist = false)
     private List<String> envList;
 
+//    private Boolean need2Approve;
+
+    private Boolean needApprove;
+
     private Integer priority;
+
+
 
     public SdpFile() {
     }
@@ -162,6 +165,14 @@ public class SdpFile extends GenericModel<Long> implements Serializable {
 
     public SdpFile(Long enabledFlag) {
         this.enabledFlag = enabledFlag;
+    }
+
+    public Boolean getNeed2Approve(){
+        return this.needApprove;
+    }
+
+    public void setNeed2Approve(Boolean needApprove){
+        this.needApprove = needApprove;
     }
 
 }
