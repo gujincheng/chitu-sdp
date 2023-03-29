@@ -268,6 +268,7 @@ public class JobService extends GenericService<SdpJob, Long> {
                     }
                 }
             }
+
             //返回全路径（前端有需要截取最后一个文件夹名称作为目录列）
             if (Objects.nonNull(x.getFileId())) {
                 String fullPath = fileService.queryFullPath(x.getFileId());
@@ -1604,29 +1605,6 @@ public class JobService extends GenericService<SdpJob, Long> {
             //更新任务表信息
             fileService.assembleContent(sdpFile, "online", null);
             sdpJob.setJobContent(sdpFile.getContent());
-            if (StrUtil.isNotBlank(userId)) {
-                sdpJob.setUpdatedBy(userId);
-            }
-            updateSelective(sdpJob);
-            isNewVersion = true;
-        }
-        //===>>>数据集成<<<===
-        else if (BusinessFlag.DI.name().equals(sdpJob.getBusinessFlag())) {
-            //数据集成的sql都放在EtlContent这里面，并且没有元表信息
-            String allContent = sdpFile.getEtlContent();
-            FlinkSqlBuilder flinkSqlBuilder = modifyOption(tableMap, allContent);
-            ddl.append(flinkSqlBuilder.toSqlString());
-            //锁文件(再次锁文件)
-            fileService.lockFile(sdpFileBO);
-            //更新文件信息
-            sdpFile.setContent(ddl.toString());
-            sdpFile.setEtlContent(ddl.toString());
-            if (StrUtil.isNotBlank(userId)) {
-                sdpFile.setUpdatedBy(userId);
-            }
-            fileService.updateSelective(sdpFile);
-            //更新任务表信息
-            sdpJob.setJobContent(ddl.toString());
             if (StrUtil.isNotBlank(userId)) {
                 sdpJob.setUpdatedBy(userId);
             }

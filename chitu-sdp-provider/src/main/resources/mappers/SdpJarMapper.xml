@@ -63,10 +63,10 @@
                 <foreach collection="criteria.orderByClauses" item="item">
                     <if test="item.field != null and item.field != ''">
                         <if test="item.orderByMode == 0">
-                            #{item.field} ASC
+                            ${item.field} ASC
                         </if>
                         <if test="item.orderByMode != 0">
-                            #{item.field} DESC
+                            ${item.field} DESC
                         </if>
                     </if>
                 </foreach>
@@ -108,10 +108,10 @@
                 <foreach collection="criteria.orderByClauses" item="item">
                     <if test="item.field != null and item.field != ''">
                         <if test="item.orderByMode == 0">
-                            #{item.field} ASC
+                            ${item.field} ASC
                         </if>
                         <if test="item.orderByMode != 0">
-                            #{item.field} DESC
+                            ${item.field} DESC
                         </if>
                     </if>
                 </foreach>

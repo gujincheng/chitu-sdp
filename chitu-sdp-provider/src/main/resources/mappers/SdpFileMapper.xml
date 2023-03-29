@@ -17,7 +17,7 @@
         <result column="locked_by" jdbcType="VARCHAR" property="lockedBy" />
         <result column="project_id" jdbcType="BIGINT" property="projectId" />
         <result column="folder_id" jdbcType="BIGINT" property="folderId" />
-        <result column="need_approve" jdbcType="TINYINT" property="need2Approve" />
+        <result column="need_approve" jdbcType="TINYINT" property="needApprove" />
         <result column="enabled_flag" jdbcType="TINYINT" property="enabledFlag" />
         <result column="trace_id" jdbcType="VARCHAR" property="traceId" />
         <result column="created_by" jdbcType="VARCHAR" property="createdBy" />

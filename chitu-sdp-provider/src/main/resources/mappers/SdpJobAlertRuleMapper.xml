@@ -40,10 +40,10 @@
                 <foreach collection="orderByClauses" item="orderByObj">
                     <if test="orderByObj.field != null and orderByObj.field != ''">
                         <if test="orderByObj.orderByMode == 0">
-                            #{orderByObj.field} ASC ,
+                            ${orderByObj.field} ASC ,
                         </if>
                         <if test="orderByObj.orderByMode != 0">
-                            #{orderByObj.field} DESC ,
+                            ${orderByObj.field} DESC ,
                         </if>
                     </if>
                 </foreach>

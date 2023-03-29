@@ -1,13 +1,10 @@
 package com.chitu.bigdata.sdp.job;
 
-import cn.hutool.core.util.ReUtil;
 import com.alibaba.fastjson.JSON;
 import com.chitu.bigdata.sdp.api.bo.PromResultInfo;
 import com.chitu.bigdata.sdp.api.domain.ConnectInfo;
-import com.chitu.bigdata.sdp.api.enums.CertifyType;
 import com.chitu.bigdata.sdp.api.model.*;
 import com.chitu.bigdata.sdp.config.SdpConfig;
-import com.chitu.bigdata.sdp.constant.BusinessFlag;
 import com.chitu.bigdata.sdp.constant.FlinkConfigKeyConstant;
 import com.chitu.bigdata.sdp.constant.PromConstant;
 import com.chitu.bigdata.sdp.interceptor.EnvHolder;
@@ -170,53 +167,34 @@ public class KafkaConsumerOffsetFetchJob {
                     continue;
                 }
 
-                ConnectInfo connectInfo = null;
-                if(BusinessFlag.DI.name().equals(sdpJobInstance.getBusinessFlag())){
-                    connectInfo = new ConnectInfo();
-                    String servers = sqlTableOptionMap.get("properties.bootstrap.servers");
-                    connectInfo.setAddress(servers);
-                    connectInfo.setCertifyType("default");
-                    String certifyType = sqlTableOptionMap.get("properties.sasl.mechanism");
-                    String up = sqlTableOptionMap.get("properties.sasl.jaas.config");
-                    if(StrUtil.isNotBlank(up)) {
-                        String username = ReUtil.getGroup1(".*username\\s*=\\s*\"(.*)\"\\s+", up);
-                        String password = ReUtil.getGroup1(".*password\\s*=\\s*\"(.*)\"\\s*", up);
-                        if (StrUtil.isNotBlank(username) && StrUtil.isNotBlank(password)) {
-                            connectInfo.setUsername(username);
-                            connectInfo.setPwd(password);
-                            connectInfo.setCertifyType(CertifyType.SASL.getType());
-                        }
+                SdpFile sdpFile = fileService.get(sdpJobInstance.getFileId());
+                if (Objects.isNull(sdpFile)) {
+                    if(log.isTraceEnabled()) {
+                        log.trace(String.format(MSG, sdpJobInstance.getId(), "文件为空【" + sdpJobInstance.getFileId() + "】"));
                     }
-                }else {
-                    SdpFile sdpFile = fileService.get(sdpJobInstance.getFileId());
-                    if (Objects.isNull(sdpFile)) {
-                        if(log.isTraceEnabled()) {
-                            log.trace(String.format(MSG, sdpJobInstance.getId(), "文件为空【" + sdpJobInstance.getFileId() + "】"));
-                        }
-                        continue;
-                    }
-                    List<SdpMetaTableConfig> confogMetaList = metaTableConfigService.selectAll(new SdpMetaTableConfig(sdpFile.getId(), sqlCreateTable.getTableName().toString()));
-                    if (CollectionUtils.isEmpty(confogMetaList)) {
-                        if(log.isTraceEnabled()) {
-                            log.trace(String.format(MSG, sdpJobInstance.getId(), "元表配置为空【" + sqlCreateTable.getTableName().toString() + "】"));
-                        }
-                        continue;
-                    }
-                    SdpMetaTableConfig confogMeta = confogMetaList.get(0);
-                    SdpDataSource sdpDataSource = dataSourceService.getByIdWithPwdPlaintext(confogMeta.getDataSourceId());
-                    if (Objects.isNull(sdpDataSource)) {
-                        if(log.isTraceEnabled()) {
-                            log.trace(String.format(MSG, sdpJobInstance.getId(), "数据源为空【" + confogMeta.getDataSourceId() + "】"));
-                        }
-                        continue;
-                    }
-
-                    connectInfo = new ConnectInfo();
-                    connectInfo.setAddress(sdpDataSource.getDataSourceUrl());
-                    connectInfo.setUsername(sdpDataSource.getUserName());
-                    connectInfo.setPwd(sdpDataSource.getPassword());
-                    connectInfo.setCertifyType(sdpDataSource.getCertifyType());
+                    continue;
                 }
+                List<SdpMetaTableConfig> confogMetaList = metaTableConfigService.selectAll(new SdpMetaTableConfig(sdpFile.getId(), sqlCreateTable.getTableName().toString()));
+                if (CollectionUtils.isEmpty(confogMetaList)) {
+                    if(log.isTraceEnabled()) {
+                        log.trace(String.format(MSG, sdpJobInstance.getId(), "元表配置为空【" + sqlCreateTable.getTableName().toString() + "】"));
+                    }
+                    continue;
+                }
+                SdpMetaTableConfig confogMeta = confogMetaList.get(0);
+                SdpDataSource sdpDataSource = dataSourceService.getByIdWithPwdPlaintext(confogMeta.getDataSourceId());
+                if (Objects.isNull(sdpDataSource)) {
+                    if(log.isTraceEnabled()) {
+                        log.trace(String.format(MSG, sdpJobInstance.getId(), "数据源为空【" + confogMeta.getDataSourceId() + "】"));
+                    }
+                    continue;
+                }
+
+                ConnectInfo connectInfo = new ConnectInfo();
+                connectInfo.setAddress(sdpDataSource.getDataSourceUrl());
+                connectInfo.setUsername(sdpDataSource.getUserName());
+                connectInfo.setPwd(sdpDataSource.getPassword());
+                connectInfo.setCertifyType(sdpDataSource.getCertifyType());
 
                 //兼容topic-pattern的情况
                /* if (StrUtil.isNotBlank(topic_pattern)) {
@@ -234,7 +212,6 @@ public class KafkaConsumerOffsetFetchJob {
                 if (CollectionUtils.isEmpty(mTopics)) {
                     continue;
                 }
-
                 //收集起来分组处理
                 Set<String> collectTopics = kafkaServerTopicMap.getOrDefault(connectInfo.getAddress(), new HashSet<>());
                 collectTopics.addAll(mTopics);

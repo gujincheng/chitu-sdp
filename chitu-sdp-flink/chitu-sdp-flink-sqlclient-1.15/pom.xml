@@ -192,7 +192,6 @@
             <groupId>org.apache.flink</groupId>
             <artifactId>flink-connector-hbase-2.2</artifactId>
             <version>${flink.version}</version>
-            <scope>provided</scope>
         </dependency>
 
         <!-- 注意：如果打包是更新到hdfs上时，需要放开provided注释，如果是用于构建镜像则需要注释 -->

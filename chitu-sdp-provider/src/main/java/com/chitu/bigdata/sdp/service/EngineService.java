@@ -97,14 +97,14 @@ public class EngineService extends GenericService<SdpEngine, Long> {
     @Autowired
     private ClusterInfoConfig clusterInfoConfig;
     @Autowired
-    private SdpEngineMapper engineMapper;
-    @Autowired
     SdpConfig sdpConfig;
 
     @Autowired
     KubernetesClusterConfig kubernetesClusterConfig;
 
     private String CODE_REX = "([\\w-.])+";
+
+    private static String RESOURCE_ALERT = "资源不足，可暂停或停止其他作业后，重新启动。";
 
     public EngineService(@Autowired SdpEngineMapper sdpEngineMapper) {
         super(sdpEngineMapper);
@@ -453,7 +453,7 @@ public class EngineService extends GenericService<SdpEngine, Long> {
         int needJmMem = Integer.parseInt(queueAndSourceConfig.getJobManagerMem());
         //如果JM内存是1G的话，yarn资源是2G；非1G需要和容器最小内存比较，如果小于容器最小内存则取容器的最小内存，否则取配置的内存。
         ClusterInfoConfig.YarnConfig yarnConfig = clusterInfoConfig.getEnvMap().get(env);
-        needJmMem = 1 == needJmMem ? 2 : (Math.max(needJmMem, yarnConfig.getDefaultConfig().getContainer().getMinMem()));
+        needJmMem = (Math.max(needJmMem, yarnConfig.getDefaultConfig().getContainer().getMinMem()));
         //JM需要多少CPU,默认是1，目前是写死的
         Integer needJmVCores = 1;
         //JM需要多少内存
@@ -503,20 +503,10 @@ public class EngineService extends GenericService<SdpEngine, Long> {
                 needJmVCores,
                 needJmMem);
         if (needJmVCores > availableAmVCores || Double.valueOf(needJmMem) > availableAmMem) {
-            errMsg = String.format(errMsg,
-                    needJmVCores,
-                    needJmMem,
-                    availableAmVCores1,
-                    availableAmMem1,
-                    availableClusterVCores,
-                    availableClusterMem
-            );
-//            throw new ApplicationException(ResponseCode.CONNECT_IS_WRONG,errMsg);
             validateResp.setSuccess(false);
-            CheckConfigProperties.CheckConfig configs = checkConfigProperties.getEnvMap().get(env);
-            validateResp.setNotice("资源不足,请跨声联系：" + configs.getResource().getNotice());
+            validateResp.setNotice(RESOURCE_ALERT);
             validateResp.setTask(new ResourceMemAndCpu(needJmVCores, needJmMem));
-            validateResp.setQueue(new ResourceMemAndCpu(availableAmVCores1, Integer.valueOf(availableAmMem1.intValue())));
+            validateResp.setQueue(new ResourceMemAndCpu(availableAmVCores, Integer.valueOf(availableAmMem.intValue())));
             validateResp.setCluster(new ResourceMemAndCpu(availableClusterVCores, Integer.valueOf(availableClusterMem.intValue())));
             log.info("============JM资源不足============");
             return validateResp;
@@ -580,30 +570,15 @@ public class EngineService extends GenericService<SdpEngine, Long> {
                 availableTmMem1,
                 needTmVCores,
                 needTmMen);
-        if (needTmVCores > availableTmVCores || needTmMen > availableTmMem) {
-            errMsg = String.format(errMsg,
-                    needTmVCores,
-                    needTmMen,
-                    availableTmVCores1,
-                    availableTmMem1,
-                    availableClusterVCores,
-                    availableClusterMem
-            );
-//            throw new ApplicationException(ResponseCode.CONNECT_IS_WRONG,errMsg);
+        if ((needTmVCores.intValue() + needJmVCores) > availableTmVCores || (needTmMen.intValue() + needJmMem) > availableTmMem.intValue()) {
             validateResp.setSuccess(false);
-            CheckConfigProperties.CheckConfig configs = checkConfigProperties.getEnvMap().get(env);
-            validateResp.setNotice("资源不足,请跨声联系：" + configs.getResource().getNotice());
-            validateResp.setTask(new ResourceMemAndCpu(Integer.valueOf(needTmVCores.intValue()), Integer.valueOf(needTmMen.intValue())));
-            validateResp.setQueue(new ResourceMemAndCpu(availableTmVCores1, Integer.valueOf(availableTmMem1.intValue())));
-            validateResp.setCluster(new ResourceMemAndCpu(availableClusterVCores, Integer.valueOf(availableClusterMem.intValue())));
+            validateResp.setNotice(RESOURCE_ALERT);
             log.info("============TM资源不足============");
-            return validateResp;
         }
-
         //当TM和JM都满足时，也需要返回集群资源信息
-        validateResp.setTask(new ResourceMemAndCpu(Integer.valueOf(needTmVCores.intValue() + needJmVCores), Integer.valueOf(needTmMen.intValue() + needJmMem)));
-        validateResp.setQueue(new ResourceMemAndCpu(availableTmVCores1 + availableAmVCores1, Integer.valueOf(availableTmMem1.intValue() + availableAmMem1.intValue())));
-        validateResp.setCluster(new ResourceMemAndCpu(availableClusterVCores, Integer.valueOf(availableClusterMem.intValue())));
+        validateResp.setTask(new ResourceMemAndCpu(needTmVCores.intValue() + needJmVCores, needTmMen.intValue() + needJmMem));
+        validateResp.setQueue(new ResourceMemAndCpu(availableTmVCores, availableTmMem.intValue()));
+        validateResp.setCluster(new ResourceMemAndCpu(availableClusterVCores, availableClusterMem.intValue()));
         return validateResp;
     }
 

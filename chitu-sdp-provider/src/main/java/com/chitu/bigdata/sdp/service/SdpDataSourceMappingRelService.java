@@ -88,9 +88,6 @@ public class SdpDataSourceMappingRelService extends GenericService<SdpDataSource
      */
     public ChangeEnvVO compare(SdpFileBO fileBO) {
         SdpFile uatFile = fileService.get(fileBO.getId());
-        if(BusinessFlag.DI.name().equals(uatFile.getBusinessFlag())){
-            throw new ApplicationException(ResponseCode.COMMON_ERR,"数据集成作业不支持转环境");
-        }
         ChangeEnvVO vo = new ChangeEnvVO();
         //转环境数据源映射关系
         List<SdpDataSourceMappingRel> mappingRels = Lists.newArrayList();
@@ -391,9 +388,6 @@ public class SdpDataSourceMappingRelService extends GenericService<SdpDataSource
     public Boolean changeEnv(ChangeEnvBO changeEnvBO) throws Exception {
         Long fileId = changeEnvBO.getFileId();
         SdpFile uatFile = fileService.get(fileId);
-        if(BusinessFlag.DI.name().equals(uatFile.getBusinessFlag())){
-            throw new ApplicationException(ResponseCode.COMMON_ERR,"数据集成作业不支持转环境");
-        }
         //同步到生产之后，需要在生产创建同样的目录
         Long lastFolderId = mkFolders4Prod(changeEnvBO.getFileId());
         String userId = Optional.ofNullable(ContextUtils.get()).map(m -> m.getUserId()).orElse(null);

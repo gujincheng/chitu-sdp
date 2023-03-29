@@ -34,7 +34,6 @@ public class JobConfigs {
     private String address;
     private boolean useSqlFragment = false;
     private Integer checkpoint = 0;
-    private GatewayConfig gatewayConfig;
     private boolean useRestAPI;
 
     private Map<String,String> config;

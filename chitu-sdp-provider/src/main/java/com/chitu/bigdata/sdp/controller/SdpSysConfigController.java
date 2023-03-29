@@ -41,7 +41,6 @@ public class SdpSysConfigController {
 
 
     @ApiOperation(value="系统运维查询")
-    @ValidateAdmin
     @RequestMapping(value="/getSysoper",method= RequestMethod.GET)
     public ResponseData getSysoper(){
         ResponseData data = new ResponseData<>();
