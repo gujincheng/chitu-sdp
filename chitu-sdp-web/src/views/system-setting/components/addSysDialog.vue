@@ -19,7 +19,7 @@
       <a-select class="auto-complete"
                 mode="multiple"
                 v-model="values"
-                placeholder="请输入姓名/工号"
+                placeholder="请输入用户名"
                 :auto-clear-search-value="false"
                 option-label-prop="label"
                 @search="onSearch">

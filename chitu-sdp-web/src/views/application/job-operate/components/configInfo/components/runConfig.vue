@@ -76,9 +76,6 @@
           } else if (key === 'runTimeSetting') {
             text = '运行时长设置'
             flag = true
-          } else if (key === 'executeDuration') {
-            text = '已运行时长'
-            flag = true
           } else {
             flag = false
           }

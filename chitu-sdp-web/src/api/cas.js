@@ -15,10 +15,10 @@ import store from '@/store'
 
 class CAS {
   //登录校验
-  async router_verify_cas(to, from, next) {
+  async router_verify_cas (to, from, next) {
     if ((!from.name || from.name === 'login') && to.name !== 'login') {//刷新页面获取用户信息
       //保存环境变量
-      const localEnv = sessionStorage.getItem('env') || 'prod'
+      const localEnv = sessionStorage.getItem('env') || 'uat'
       store.dispatch('global/setEnv', localEnv)
       sessionStorage.setItem('env', localEnv)
       if (store.getters.userInfo) {
@@ -36,7 +36,7 @@ class CAS {
       next()
     }
   }
-  async generateRoutes() {
+  async generateRoutes () {
     const info = await getInfo()
     if (info && info.code === 0 && info.data) {
       store.dispatch('user/setUserId', info.data.id)

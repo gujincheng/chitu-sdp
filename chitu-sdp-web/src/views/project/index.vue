@@ -57,6 +57,7 @@
     </div>
     <div class="group-button">
       <a-button @click="add"
+                v-show="isAdmin"
                 type="primary"
                 size="small"
                 icon="plus">
@@ -66,13 +67,13 @@
     <div class="project-list">
       <div class="sub-list">
         <chitu-table v-loading="isLoading"
-                   :columns="columns"
-                   :dataSource="dataList"
-                   rowKey="id"
-                   @change="handleChange"
-                   :pagination="pagination"
-                   @pageChange="pageChange"
-                   @pageSizeChange="pageSizeChange">
+                     :columns="columns"
+                     :dataSource="dataList"
+                     rowKey="id"
+                     @change="handleChange"
+                     :pagination="pagination"
+                     @pageChange="pageChange"
+                     @pageSizeChange="pageSizeChange">
           <template #priorityTitle>
             <span>
               项目等级
@@ -528,7 +529,7 @@
       },
       add () {
         if (!this.isAdmin) {
-          this.$message.warning('您不是管理员，没有权限新建项目，若需新建项目，请联系管理员苏涛10、邹倡振~');
+          this.$message.warning('您不是管理员，没有权限新建项目，若需新建项目，请联系管理员');
           return
         }
         const obj = {

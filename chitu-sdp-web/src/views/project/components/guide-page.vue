@@ -115,6 +115,12 @@
           </div>
         </div>
       </div>
+      <div class="footer-container">
+        <span style="margin-right:10px;">Copyright © 2023</span>
+        <a href="https://beian.miit.gov.cn"
+           target="_blank"
+           rel="noopener noreferrer">粤ICP备18095224号-7</a>
+      </div>
     </div>
   </div>
 </template>
@@ -264,6 +270,8 @@
       height: 100%;
       position: relative;
       padding: 16px;
+      display: flex;
+      flex-direction: column;
       .header-container {
         height: 264px;
         width: 100%;
@@ -317,7 +325,8 @@
       }
       .content-container {
         padding-top: 16px;
-        height: calc(100% - 262px);
+        // height: calc(100% - 300px);
+        flex: 1;
         width: 100%;
         .content-left {
           width: 359px;
@@ -474,6 +483,10 @@
             }
           }
         }
+      }
+      .footer-container {
+        text-align: center;
+        padding-top: 16px;
       }
     }
   }

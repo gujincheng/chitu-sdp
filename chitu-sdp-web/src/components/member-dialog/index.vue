@@ -44,10 +44,10 @@
       </div>
       <!-- 数据展示 -->
       <chitu-table :columns="columns"
-                 row-key="employeeNumber"
-                 :autoHight="false"
-                 :data-source="tableData"
-                 :scroll="{ y: '400px' }">
+                   row-key="employeeNumber"
+                   :autoHight="false"
+                   :data-source="tableData"
+                   :scroll="{ y: '400px' }">
         <template #isLeader="{record }">
           <a-select style="width:120px"
                     :default-value="record.isLeader"
@@ -94,7 +94,7 @@
         <a-select class="auto-complete"
                   mode="multiple"
                   v-model="values"
-                  placeholder="使用者姓名/工号"
+                  placeholder="使用者姓名"
                   :auto-clear-search-value="false"
                   option-label-prop="label"
                   @search="onAddSearch">
@@ -158,7 +158,7 @@
           value: 1
         }],
         serchDataVisible: false,
-        inputMsg: '请输入姓名/工号',
+        inputMsg: '请输入用户名',
         columns: [{ // 表列名
           title: '用户名',
           dataIndex: 'userName',

@@ -120,7 +120,7 @@
       </span>
       <a-select class="auto-complete"
                 mode="multiple"
-                placeholder="请输入姓名/工号"
+                placeholder="请输入用户名"
                 v-model="formData.notifyUsers"
                 :auto-clear-search-value="false"
                 option-label-prop="label">
