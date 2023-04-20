@@ -12,7 +12,7 @@
     <a-select class="select-user"
               show-search
               :show-arrow="false"
-              placeholder="请输入姓名或工号"
+              placeholder="请输入用户名"
               label-in-value
               :default-value="member"
               :filter-option="false"

@@ -253,16 +253,16 @@
       <div v-if="['dev','uat'].includes($store.getters.env)"
            class="footer-left"
            slot="footer">
-        UAT环境作业运行
-        <a-select style="width: 80px;"
+        体验环境作业运行10分钟后自动下线
+        <!-- <a-select style="width: 80px;"
                   v-model="runDays">
           <a-select-option v-for="item in runDaysList"
                            :value="item.value"
                            :key="item.value">
             {{ item.name }}
           </a-select-option>
-        </a-select>
-        后自动下线
+        </a-select> -->
+
       </div>
       <div v-else
            slot="footer"></div>

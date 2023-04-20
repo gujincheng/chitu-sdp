@@ -71,7 +71,7 @@
       return {
         isShowDialog: false,
         serchDataVisible: false,
-        inputMsg: '请输入姓名/工号',
+        inputMsg: '请输入用户名',
         labelInfos: [{
           name: '添加使用者',
           value: 'addEngineUser'

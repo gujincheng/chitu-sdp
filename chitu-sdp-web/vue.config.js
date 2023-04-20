@@ -12,6 +12,7 @@ const PROXY_ENV = 'dev'
 // const PROXY_ENV = 'prod'
 const targets = {
     dev: 'http://127.0.0.1:12222',
+    // dev: 'http://10.83.198.2:12222',
     // dev:'http://10.121.18.2:12281',
     uat: 'http://127.0.0.1:12222',
     prod: 'http://127.0.0.1:12222',

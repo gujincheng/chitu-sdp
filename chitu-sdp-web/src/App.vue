@@ -62,7 +62,7 @@
         'setUserRoutes': 'setUserRoutes'
       }),
       initEnv () {
-        let localEnv = sessionStorage.getItem('env') || 'prod'
+        let localEnv = sessionStorage.getItem('env') || 'uat'
         this.$store.dispatch('global/setEnv', localEnv)
       },
       async getInfo () {

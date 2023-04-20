@@ -41,12 +41,12 @@
       </div>
       <!-- 数据展示 -->
       <chitu-table row-key="id"
-                 :columns="columns"
-                 v-loading="isLoading"
-                 :autoHight="false"
-                 :dataSource="tableData"
-                 :scroll="{y:'400px'}"
-                 @change="handleTableChange">
+                   :columns="columns"
+                   v-loading="isLoading"
+                   :autoHight="false"
+                   :dataSource="tableData"
+                   :scroll="{y:'400px'}"
+                   @change="handleTableChange">
         <template #delete="{record}">
           <span class="item-delete"
                 @click="handleDeleteMemeber(record)">
@@ -76,7 +76,7 @@
         <a-select class="auto-complete"
                   mode="multiple"
                   v-model="values"
-                  placeholder="请输入姓名/工号"
+                  placeholder="请输入用户名"
                   :auto-clear-search-value="false"
                   option-label-prop="label"
                   @search="onAddSearch">
@@ -131,7 +131,7 @@
         },
         isShowDialog: false,
         serchDataVisible: false,
-        inputMsg: '请输入姓名/工号',
+        inputMsg: '请输入用户名',
         labelInfos: [{
           name: '添加使用者',
           value: 'addEngineUser'

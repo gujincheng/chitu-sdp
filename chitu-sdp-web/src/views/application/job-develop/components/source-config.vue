@@ -12,6 +12,9 @@
       </a-select> -->
 
     </div>
+    <div class="warn-tip">
+      <i class="chitutree-h5 chitutreedengpaotishi"></i>温馨提示：体验环境资源有限，暂不支持修改
+    </div>
     <div v-if="mode === '基础模式'"
          class="basic">
       <div class="row justify-between align-start">
@@ -31,6 +34,7 @@
           <h3>Job Manager Memory</h3>
           <div class="justify-start">
             <a-input type="number"
+                     disabled
                      v-model="jobManagerMem"
                      placeholder="请输入Job Manager Memory">
               <a-tooltip slot="suffix"
@@ -60,6 +64,7 @@
           <h3>Task Manager Memory</h3>
           <div class="justify-start">
             <a-input type="number"
+                     disabled
                      v-model="taskManagerMem"
                      placeholder="请输入Task Manager Memory">
               <a-tooltip slot="suffix"
@@ -76,6 +81,7 @@
         <div class="col">
           <h3>并发度</h3>
           <a-input type="number"
+                   disabled
                    v-model="parallelism"
                    placeholder="请输入并发度">
             <a-tooltip slot="suffix"
@@ -172,7 +178,17 @@
     width: 100%;
     font-size: 12px;
     padding: 0 16px;
-
+    .warn-tip {
+      height: 26px;
+      line-height: 26px;
+      padding: 0 8px;
+      color: #ff9118;
+      display: inline-block;
+      font-size: 12px;
+      i {
+        margin-right: 6px;
+      }
+    }
     .row {
       margin-top: 12px;
 
