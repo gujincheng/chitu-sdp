@@ -3,7 +3,7 @@
 </p>
 <p align="center">
     <a href="https://galaxy-data-cn.github.io/chitu-sdp-website/">产品官网</a> | 
-    <a href="http://183.57.45.188/#/login">体验环境</a> | 
+    <a href="http://galaxy-data.cn/">体验环境</a> | 
     <a href="https://galaxy-data-cn.github.io/chitu-sdp-website/">视频介绍</a>
 </p>
 
