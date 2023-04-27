@@ -1,3 +1,5 @@
+## 收到 Apache StreamPark 反馈赤兔实时计算平台使用到了部分 Apache StreamPark 源代码, 经确认确实存在文章截图中反馈的问题, 我们正在紧急进行内部审查, 具体影响范围稍后同步, 由此给 Apache StreamPark 带来的影响我们深感抱歉。
+
 <p align="center">
 <img src="docs/md/image/项目名logo.png"  width="30%" syt height="30%"  div align=center />
 </p>
