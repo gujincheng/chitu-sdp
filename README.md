@@ -1,4 +1,4 @@
-## 开源社区朋友大家好：
+## 开源的社区朋友们大家好：
 
 收到 Apache StreamPark 社区反馈，赤兔实时计算平台使用到了部分 Apache StreamPark 和 Dinky 源代码，
 
