@@ -1,25 +1,3 @@
-## 开源的社区朋友们大家好：
-
-收到 Apache StreamPark 社区反馈，赤兔实时计算平台使用到了部分 Apache StreamPark 和 Dinky 源代码，
-
-经确认确实存在文章截图中反馈的问题，我们正在紧急进行内部审查，具体影响范围稍后同步。
-
-后续我们会采取必要措施，以避免此类错误行为再次发生，包括加强团队成员的意识和培养正确的代码使用规范，
-
-由此给 Apache StreamPark 和 Dinky 带来的影响我们深感抱歉！
-
-赤兔实时计算团队
-
-<p align="center">
-<img src="docs/md/image/项目名logo.png"  width="30%" syt height="30%"  div align=center />
-</p>
-<p align="center">
-    <a href="http://chitu.galaxy-data.cn/">产品官网</a> | 
-    <a href="http://chitu.galaxy-data.cn/demo/">体验环境</a> | 
-    <a href="http://chitu.galaxy-data.cn/">视频介绍</a>
-</p>
-
-
 ---
 
 ## 产品简介
