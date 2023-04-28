@@ -34,11 +34,11 @@ public class EmailNotifyService {
     private SdpConfig sdpConfig;
 
     public boolean sendMsg(List<String> employeeEmailList,String subject,String contentJsonStr){
-        SdpConfig.ExperienceEnv experienceEnv = sdpConfig.getExperienceEnv();
+        /*SdpConfig.ExperienceEnv experienceEnv = sdpConfig.getExperienceEnv();
         if(!(null != experienceEnv && null != experienceEnv.getIsExperienceEnv() && true == experienceEnv.getIsExperienceEnv() && null != experienceEnv.getJobRunningTime())){
             // 体验环境无相关配置
             return true;
-        }
+        }*/
         if(CollectionUtils.isEmpty(employeeEmailList)){
             return true;
         }
